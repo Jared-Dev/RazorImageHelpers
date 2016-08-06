@@ -1,0 +1,15 @@
+@helper SvgImage(string SvgImagePath, string NonSvgImagePath, string ClassList = "", string AltText = "", string StyleText = "")
+{
+    <!--[if !IE]><!--><img src="@SvgImagePath" alt="@AltText" class="@ClassList" style="@StyleText" /><!--<![endif]-->
+    <!--[if IE]><img src="@NonSvgImagePath" alt="@AltText" class="@ClassList" style="@StyleText" /><![endif]-->
+}
+
+@helper SvgImageInline(string SvgImagePath, string NonSvgImagePath="", string ClassList = "", string AltText = "", string StyleText = "")
+{
+    <!--[if !IE]><!-->
+    <div class="@ClassList">
+        @FileToString.AsHtmlString(SvgImagePath)
+    </div>
+    <!--<![endif]-->
+    <!--[if IE]><img src="@NonSvgImagePath" alt="@AltText" class="@ClassList" style="@StyleText" /><![endif]-->
+}
